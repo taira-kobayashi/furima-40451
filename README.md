@@ -34,7 +34,7 @@
 
 ### association
 
-- belong_to user
+- belongs_to user
 - has_one order
 
 ## ordersテーブル
@@ -46,8 +46,8 @@
 
 ### association
 
-- belong_to user
-- belong_to item
+- belongs_to user
+- belongs_to item
 - has_one shippingaddress
 
 ## shippingaddress
@@ -64,4 +64,4 @@
 
 ### association
 
-- belong_to order
+- belongs_to order
