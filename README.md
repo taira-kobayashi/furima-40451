@@ -35,7 +35,7 @@
 ### association
 
 - belong_to user
-- has_one orders
+- has_one order
 
 ## ordersテーブル
 
@@ -64,4 +64,4 @@
 
 ### association
 
-- belong_to oeder
+- belong_to order
