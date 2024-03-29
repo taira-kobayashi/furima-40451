@@ -23,27 +23,26 @@
 |---------|--------------|-------------|
 | item_name | string | null:false |
 | expanation | text | null:false |
-| category | integer | null:false |
-| situation | integer | null:false |
-| delivery | integer | null:false |
-| region | integer | null:false |
-| shippingdate| integer | null:false |
+| category_id | integer | null:false |
+| situation_id | integer | null:false |
+| delivery_id | integer | null:false |
+| region_id | integer | null:false |
+| shippingdate_id| integer | null:false |
 | price | integer | null:false |
-| user_id | references | null:false foreign_key:true |
+| user | references | null:false foreign_key:true |
 
 
 ### association
 
 - belong_to user
-- has_many orders
+- has_one orders
 
 ## ordersテーブル
 
 | Column  |     Type     |   Options   |
 |---------|--------------|-------------|
-| user_id | references | null:false foreign_key:true |
-| item_id | references | null:false foreign_key:true |
-| shippingaddress_id | references | null:false foreign_key:true |
+| user | references | null:false foreign_key:true |
+| item | references | null:false foreign_key:true |
 
 ### association
 
@@ -55,12 +54,13 @@
 
 | Column  |     Type     |   Options   |
 |---------|--------------|-------------|
-| postcode | integer | null:false |
-| region | integer | null:false |
+| postcode | string | null:false |
+| region_id | integer | null:false |
 | municipalities | string | null:false |
 | streetaddress | string | null:false |
-| buildingname | string | null:false |
-| tel | integer | null:false |
+| buildingname | string |  |
+| tel | string | null:false |
+| order | references | null:false foreign_key:true |
 
 ### association
 
