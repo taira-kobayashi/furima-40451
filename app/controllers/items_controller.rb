@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
 
   def new
+    @item = Item.new
 #    @articles = Article.order("created_at DESC")
   end
 
