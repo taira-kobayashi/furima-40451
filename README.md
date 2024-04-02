@@ -23,11 +23,11 @@
 |---------|--------------|-------------|
 | item_name | string | null:false |
 | expanation | text | null:false |
-| category_id | integer | null:false |
-| situation_id | integer | null:false |
-| delivery_id | integer | null:false |
-| region_id | integer | null:false |
-| shippingdate_id| integer | null:false |
+| category_id | integer | null:false | カテゴリー
+| situation_id | integer | null:false | 商品の状態
+| delivery_id | integer | null:false | 配送料の負担商品の状態
+| region_id | integer | null:false | 都道府県
+| shippingdate_id| integer | null:false | 発送までの日数
 | price | integer | null:false |
 | user | references | null:false foreign_key:true |
 
@@ -55,7 +55,7 @@
 | Column  |     Type     |   Options   |
 |---------|--------------|-------------|
 | postcode | string | null:false |
-| region_id | integer | null:false |
+| region_id | integer | null:false | 都道府県
 | municipalities | string | null:false |
 | streetaddress | string | null:false |
 | buildingname | string |  |
