@@ -5,17 +5,22 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-#    @articles = Article.order("created_at DESC")
+
   end
 
-#  def create
-#    @user = User.new(user_params)
-#  end
+  def create
+    @item = current_user.items.build(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
 
 private
 
-  def message_params
+  def item_params
     params.require(:item).permit(:image, :item_name, :expanation, :category_id, :situation_id, :delivery_id, :region_id, :shippingdate_id, :price,) .merge(user_id: current_user.id)
   end
 
