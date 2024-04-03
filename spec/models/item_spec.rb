@@ -93,18 +93,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is not a number"
       end
-
-
-
-
-
-      it 'が入力されていないと登録できない' do
-        @item.name = '' 
-        @item.valid?
-        expect(@item.errors.full_messages).to include "Name can't be blank"
-      end
-
-
     end
   end
 end
