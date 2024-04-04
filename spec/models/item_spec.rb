@@ -34,10 +34,22 @@ RSpec.describe Item, type: :model do
     end
 
     context '異常系テスト' do
+      it 'ユーザーが紐づいていないと登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "User must exist"
+      end
+
       it '画像データが空では登録できない' do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Image can't be blank"
+      end
+
+      it '商品名が空では登録できない' do
+        @item.item_name = '' 
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Item name can't be blank"
       end
 
       it '商品の説明が空では登録できない' do
@@ -82,6 +94,18 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price is not a number"
       end
 
+      it '料金が299円未満だと登録できない' do
+        @item.price = '299' 
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price must be greater than or equal to 300"
+      end
+
+      it '料金が10,000,000円以上だと登録できない' do
+        @item.price = '10000000' 
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
+      end
+
       it '出品価格が全角数字だと出品できない' do
         @item.price = '３００'
         @item.valid?
@@ -91,7 +115,7 @@ RSpec.describe Item, type: :model do
       it '出品価格が全角文字だと出品できない' do
         @item.price = 'あいう'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not a number"
+        expect(@item.errors.full_messages).to include "Price is not a number" 
       end
     end
   end
