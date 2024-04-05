@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only:[:new]
-  before_action :set_item, only:[:show, :edit]
+  before_action :authenticate_user!, only:[:new, :edit]
+  before_action :set_item, only:[:show, :edit, :update]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.build(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to roth
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,9 +23,21 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if current_user.nil?
+      redirect_to new_user_session_path
+    elsif current_user == @item.user
+      render :edit
+    else
+      redirect_to items_path
+    end
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
+    end
   end
 
 private
