@@ -134,8 +134,6 @@
     <ul class='item-lists'>
 
 
-
-
       <% @items.each do |itemList| %>
         <li class='list'>
           <%= link_to "#" do %>
@@ -163,9 +161,7 @@
           <% end %>
         </li>
       <% end %>
-
-
-
+      
       <% unless @items.any? %>
         <li class='list'>
           <%= link_to '#' do %>
