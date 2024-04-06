@@ -23,11 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.nil?
-      redirect_to new_user_session_path
-    elsif current_user == @item.user
-      render :edit
-    else
+    if  current_user != @item.user
+
       redirect_to items_path
     end
   end
