@@ -7,7 +7,11 @@ class Item < ApplicationRecord
   validates :expanation, presence:true
   validates :image, presence: true
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-
+  validates :category_id, presence: true
+  validates :situation_id, presence: true
+  validates :delivery_id, presence: true
+  validates :region_id, presence: true
+  validates :shippingdate_id, presence: true
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
