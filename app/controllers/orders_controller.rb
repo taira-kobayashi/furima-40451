@@ -47,9 +47,10 @@ private
   def buy_check
     if  Order.exists?(item_id: params[:item_id])
       redirect_to root_path
+    elsif  current_user == @item.user
+    redirect_to root_path
     end
   end
-
 
 
 end
