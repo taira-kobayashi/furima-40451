@@ -1,6 +1,6 @@
 class OrderShippingaddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :city, :postcode, :region_id, :municipalities, :streetaddress, :buildingname, :tel, :order
+  attr_accessor :user_id, :item_id, :city, :postcode, :region_id, :municipalities, :streetaddress, :buildingname, :tel, :order, :token
 
 
   with_options presence: true do
@@ -11,6 +11,7 @@ class OrderShippingaddress
     validates :streetaddress
     validates :region_id, numericality: {other_than: 0, message: "can't be blank"}
     validates :tel, numericality: { only_integer: true }, length: { minimum: 10, maximum: 11 }
+    validates :token
   end
 
   def save
