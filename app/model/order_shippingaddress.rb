@@ -9,7 +9,7 @@ class OrderShippingaddress
     validates :postcode, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :municipalities
     validates :streetaddress
-    validates :region_id, numericality: {other_than: 0, message: "can't be blank"}
+    validates :region_id, numericality: {other_than: 1, message: "can't be blank"}
     validates :tel, numericality: { only_integer: true }, format: { with: /\A[0-9]+\z/ }, length: { minimum: 10, maximum: 11 }
     validates :token
   end

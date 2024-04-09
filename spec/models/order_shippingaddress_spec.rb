@@ -34,7 +34,7 @@ RSpec.describe OrderShippingaddress, type: :model do
       end
 
       it "都道府県が空では登録できない" do
-        @test.region_id = ""
+        @test.region_id = "1"
         @test.valid?
         expect(@test.errors.full_messages).to include("Region can't be blank")
       end
@@ -79,6 +79,18 @@ RSpec.describe OrderShippingaddress, type: :model do
         @test.token = nil
         @test.valid?
         expect(@test.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it "user_idが空では登録できない" do
+        @test.user_id = ""
+        @test.valid?
+        expect(@test.errors.full_messages).to include("User can't be blank")
+      end
+
+      it "item_idが空では登録できない" do
+        @test.item_id = ""
+        @test.valid?
+        expect(@test.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
